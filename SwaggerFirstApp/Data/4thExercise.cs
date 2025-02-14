@@ -1,10 +1,4 @@
-﻿using Amazon.Auth.AccessControlPolicy;
-using Azure;
-using NPOI.SS.Formula.Functions;
-using Polly.Retry;
-using System.Net.Http;
-
-namespace SwaggerFirstApp.Data
+﻿namespace SwaggerFirstApp.Data
 {
     public class _4thExercise
 {
