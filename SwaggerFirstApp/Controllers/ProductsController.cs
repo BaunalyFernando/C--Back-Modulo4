@@ -27,4 +27,30 @@ public class ProductsController : ControllerBase
         _context.SaveChanges();
         return CreatedAtAction(nameof(GetAll), new { id = product.Id }, product);
     }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var product = _context.Products.Find(id);
+        if (product == null)
+        {
+            return NotFound();
+        }
+
+        _context.Products.Remove(product);
+        _context.SaveChanges();
+        return NoContent();
+    }
+
+    [HttpGet("{id}")]
+    public IActionResult GetById(int id)
+    {
+        var product = _context.Products.Find(id);
+        if (product == null)
+        {
+            return NotFound();
+        }
+
+        return Ok(product);
+    }
 }

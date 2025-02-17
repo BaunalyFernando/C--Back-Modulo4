@@ -27,7 +27,11 @@ public class ProductControllerTests
     public void Create_ReturnsCreatedAtAction()
     {
         // Arrange
-        var product = new Product { Id = 1, Name = "Test Product", Price = 100 };
+        var product = new Product
+                { Id = 1, 
+                  Name = "Test Product", 
+                  Price = 100 
+                };
 
         // Act
         var result = _controller.Create(product) as CreatedAtActionResult;
