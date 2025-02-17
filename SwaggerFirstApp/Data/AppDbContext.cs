@@ -11,8 +11,22 @@ namespace SwaggerFirstApp.Data
         {
         }
 
-        // Define los DbSet para tus entidades
+        
+        
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .HasOne(p => p.Category)
+                .WithMany(c => c.Productos)
+                .HasForeignKey(p => p.CategoryId)
+                .OnDelete(DeleteBehavior.Restrict); 
+        }
         public DbSet<Product> Products { get; set; }
         public DbSet<Projects> Projects { get; set; }
+
+        public DbSet<Category> Categories { get; set; }
+
+
     }
 }
