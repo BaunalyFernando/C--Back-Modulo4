@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SwaggerFirstApp.Data;
+using SwaggerFirstApp.Services.DTOs;
 
 namespace SwaggerFirstApp.Controllers
 {
@@ -34,8 +35,13 @@ namespace SwaggerFirstApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Models.Category category)
+        public IActionResult Create(CategoryDto categoryDto)
         {
+            var category = new Models.Category
+            {
+                Name = categoryDto.Name
+            };
+
             _context.Categories.Add(category);
             _context.SaveChanges();
             return CreatedAtAction(nameof(GetById), new { id = category.Id }, category);
