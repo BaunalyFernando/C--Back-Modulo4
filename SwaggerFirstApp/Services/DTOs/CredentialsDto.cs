@@ -1,9 +1,7 @@
-﻿namespace SwaggerFirstApp.Models
+﻿namespace SwaggerFirstApp.Services.DTOs
 {
-    public class Credential
+    public class CredentialsDto
     {
-        public int Id { get; set; }
-
         public string Username { get; set; }
         public string Password { get; set; }
     }

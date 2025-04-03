@@ -3,9 +3,11 @@ using SwaggerFirstApp.Data;
 using SwaggerCodeFirstApp.Models;
 using SwaggerFirstApp.Services;
 using SwaggerFirstApp.Services.DTOs;
+using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class ProductsController : ControllerBase
 {
     private readonly AppDbContext _context;

@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SwaggerCodeFirstApp.Models;
 using SwaggerFirstApp.Data;
+using SwaggerFirstApp.Services;
+using SwaggerFirstApp.Services.DTOs;
 
 
 public class ProductControllerTests
@@ -10,6 +12,7 @@ public class ProductControllerTests
     private Mock<DbContext> _mockContext;
     private Mock<DbSet<Product>> _mockSet;
     private ProductsController _controller;
+    private IProductService _productService;
 
     public ProductControllerTests()
     {
@@ -20,14 +23,14 @@ public class ProductControllerTests
             .Options;
         var context = new AppDbContext(options);
 
-        _controller = new ProductsController(context);
+        _controller = new ProductsController(context, _productService);
     }
 
     [Fact]
     public void Create_ReturnsCreatedAtAction()
     {
         // Arrange
-        var product = new Product
+        var product = new ProductDto
                 { Id = 1, 
                   Name = "Test Product", 
                   Price = 100 
